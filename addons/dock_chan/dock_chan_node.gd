@@ -58,8 +58,8 @@ func _all_animation_frames(animation_name, directory_name):
 			if dir.current_is_dir():
 				accumulator += accumulator + _all_animation_frames(animation_name, full_file_name)
 			else:
-				if regex.search(file_name):
-					accumulator.append(full_file_name)
+				if AnimationCellFile.is_sheet_cell(animation_name, file_name):
+					accumulator.append(AnimationCellFile.from_file(file_name, directory_name))
 			file_name = dir.get_next()
 			full_file_name = directory_name + "/" + file_name
 	else:
