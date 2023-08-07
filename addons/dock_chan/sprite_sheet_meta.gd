@@ -3,10 +3,11 @@ extends Resource
 
 var max_frames: int
 var animations := {}
+var name := ""
 
 static func from(sheet_name, directory_name):
 	var all_frames = _all_animation_frames(sheet_name, directory_name)
-	return all_frames.reduce(SpriteSheetMeta._reduce_animation_frames, SpriteSheetMeta.new())
+	return all_frames.reduce(SpriteSheetMeta._reduce_animation_frames, SpriteSheetMeta.new(sheet_name))
 	
 static func _reduce_animation_frames(sprite_sheet_meta: SpriteSheetMeta, cell: AnimationCellFile) -> SpriteSheetMeta:
 	var cells = sprite_sheet_meta.animations.get(cell.animation_name, [])
@@ -16,7 +17,6 @@ static func _reduce_animation_frames(sprite_sheet_meta: SpriteSheetMeta, cell: A
 	return sprite_sheet_meta
 
 static func _all_animation_frames(animation_name, directory_name):
-	print("hello")
 	var dir = DirAccess.open(directory_name)
 	var accumulator = []
 	if dir:
@@ -34,6 +34,9 @@ static func _all_animation_frames(animation_name, directory_name):
 	else:
 		print("An error occurred when trying to access the path. " + directory_name)
 	return accumulator
+	
+func _init(name):
+	self.name = name
 
 func animation_count() -> int:
 	return self.animations.keys().size()

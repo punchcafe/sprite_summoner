@@ -63,9 +63,25 @@ editable = false
 
 [node name="Generate" type="Button" parent="."]
 layout_mode = 0
-offset_left = 110.0
-offset_top = 152.0
-offset_right = 288.0
-offset_bottom = 183.0
+offset_left = 107.0
+offset_top = 202.0
+offset_right = 285.0
+offset_bottom = 233.0
 disabled = true
 text = "Generate"
+
+[node name="WidthBox" type="TextEdit" parent="."]
+offset_left = 9.0
+offset_top = 152.0
+offset_right = 82.0
+offset_bottom = 187.0
+placeholder_text = "Width
+"
+
+[node name="HeightBox" type="TextEdit" parent="."]
+offset_left = 96.0
+offset_top = 152.0
+offset_right = 169.0
+offset_bottom = 187.0
+placeholder_text = "Height
+"
